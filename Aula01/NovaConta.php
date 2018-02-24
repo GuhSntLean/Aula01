@@ -49,7 +49,7 @@ class Conta
 	public function setTitular($titular){
 		$this->titular = $titular;
 	}
-	public function setNumConta
+	public function setNumConta()
 
 
 	public function depositar(int $valor){
