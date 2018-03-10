@@ -1,0 +1,51 @@
+//postgre
+sudo su
+
+su postgres
+
+psql
+
+CREATE DATABASE aula03;
+
+CREATE USER gs PASSWORD '4linux@';
+
+ALTER BATABASE aula03 OWNER TO gs;
+
+\q
+
+exit
+
+psql -h localhost -U gs aula03
+
+CREATE TABLE usuarios(id SERIAL PRIMARY KEY, 
+						usuario VARCHAR(100) NOT NULL UNIQUE,
+						senha VARCHAR(8) NOT NULL);
+
+
+
+//mysql
+
+sudo su 
+
+mysql
+
+CREATE USER 'gs'@'localhost' INDENTIFIED BY '4linux@'
+
+GRANT ALL PRIVILEGES ON *.* 
+TO 'gustavo'@'localhost'
+
+CREATE DATABASE aula03;
+
+USE aula03
+
+CREATE TABLE usuarios(id INT NOT NULL AUTO_INCREMET PRIMARY KEY,
+						usuario VARCHAR(100) NOT NULL UNIQUE,
+						senha VARCHAR(8) NOT NULL);
+
+
+Tmontec
+
+bindParam
+bindValue
+
+http://dontpad.com/lm/501/autoloader
