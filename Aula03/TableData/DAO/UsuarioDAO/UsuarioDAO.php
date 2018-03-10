@@ -6,11 +6,12 @@ use PDO;
 use Model\Usuario\Usuario;
 
 class UsuarioDAO{
-	private $con = nulĺ;
+	private $con = null;
 
 	public function __construct(){
 		$this->con = Conexao::getInstance();
 	}
+
 	public function insert(Usuario $usuario){
 		try{
 			$this->con->beginTransaction();
@@ -20,7 +21,7 @@ class UsuarioDAO{
 			$stmt->bindValue(":usuario",$usuario->getUsuario());
 			$stmt->bindValue(":senha",$usuario->getSenha());
 			$stmt->execute();
-			$stmt->con->commit();
+			$this->con->commit();
 
 		}catch(PDOException $e){
 			$this->con->rollback();
@@ -56,4 +57,58 @@ class UsuarioDAO{
 		return new Usuario($item['Usuario'],$item['senha'],$item['id']);
 	}
 
+	public function update(Usuario $usuario){
+		try{
+			$this->con->beginTransaction();
+
+			$sql = "UPDATE usuarios SET usuarios = :usuarios, senha = :senha , WHERE id =:id";
+
+			$stmt = bindValue(":usuario", $usuario->getUsuario());
+			$stmt = bindValue(":senha", $usuario->getSenha());
+			$stmt = bindValue(":senha", $usuario->getId());
+
+			$stmt->execute();
+
+			$this->con->commit();
+		}catch(PDOException $e){
+			$this->con->rollback();
+			die($e->getMessage);
+		}
+	}
+
+	public function delete(Usuario $usuario){
+		try{
+			$this->con->beginTransaction();
+
+			$sql = "DELETE FROM usurios WHERE id = :id";
+
+			$stmt = $this->con->prepare($sql);
+			$stmt->bindValue(":id",$usuarios->getId());
+
+			$stmt->execute();
+
+			$this->con->commit();
+		}catch(PDOException $e){
+			$this->con->rollback();
+			die($e->getMessage);
+		}
+	}
+
+	public function delete2(Usuario $usuario){
+		try{
+			$this->con->beginTransaction();
+
+			$sql = "DELETE FROM usurios WHERE id = :id";
+
+			$stmt = $this->con->prepare($sql);
+			$stmt->bindValue(":id", $id);
+
+			$stmt->execute();
+
+			$this->con->commit();
+		}catch(PDOException $e){
+			$this->con->rollback();
+			die($e->getMessage);
+		}
+	}
 }

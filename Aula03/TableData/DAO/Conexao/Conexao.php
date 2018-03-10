@@ -15,7 +15,7 @@ class Conexao
 	private function __construct(){}
 	private function __clone(){}
 
-	private static function getInstance(){
+	public static function getInstance(){
 		if(is_null(self::$instance)){
 			self::$instance =  new PDO(self::$dns,self::$user,self::$pass);
 			self::$instance->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);

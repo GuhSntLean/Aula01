@@ -21,6 +21,14 @@ class Usuario{
 		return $this->senha;
 	}
 
+	public function getId(){
+		return $this->id;
+	}
+
+	public function setUsuario($id){
+		 $this->id = $id;
+	}
+
 	public function setUsuario($usuario){
 		 $this->usuario = $usuario;
 	}
@@ -40,11 +48,23 @@ class Usuario{
 	}
 
 	public static function save(){
-
+		$dao = new UsuarioDAO();
+		if(is_null($this->id)){
+			$dao->insert();
+		}else{
+			$dao->update($this);
+		}
 	}
 
 	public static function remove(){
+		$dao = new UsuarioDAO();
+		$dao->delete($this);
+	}
 
+
+	public static function remove2(){
+		$dao = new UsuarioDAO();
+		$dao->delete2($id);
 	}
 
 }
