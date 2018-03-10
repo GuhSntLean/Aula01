@@ -5,9 +5,16 @@
 	use Model\Usuario\Usuario;
 	use DAO\UsuarioDAO\UsuarioDAO;
 
-	$gustavo =  new Usuario('Gut','753');
+	$gustavo =  new Usuario('rota','753',2);
 
-	$dao = new UsuarioDAO();
+
+
+	echo "<pre>";
+	$listar = Usuario::all();
+	$achar = Usuario::find(1);
+	$achar->setUsuario("Beatriz");
+	$achar->save();
+	print_r($achar);
 		
 	
 

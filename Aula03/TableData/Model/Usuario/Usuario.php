@@ -1,11 +1,13 @@
 <?php
 namespace Model\Usuario;
 
+use DAO\UsuarioDAO\UsuarioDAO;
+
 class Usuario{
 
 	private $usuario;
 	private $senha;
-	private $id;
+	private $id = null;
 
 	public function __construct($usuario, $senha,$id=null){
 		$this->usuario = $usuario;
@@ -25,7 +27,7 @@ class Usuario{
 		return $this->id;
 	}
 
-	public function setUsuario($id){
+	public function setId($id){
 		 $this->id = $id;
 	}
 
@@ -47,16 +49,16 @@ class Usuario{
 		return $dao->find($id);
 	}
 
-	public static function save(){
+	public function save(){
 		$dao = new UsuarioDAO();
 		if(is_null($this->id)){
-			$dao->insert();
+			$dao->insert($this);
 		}else{
 			$dao->update($this);
 		}
 	}
 
-	public static function remove(){
+	public function remove(){
 		$dao = new UsuarioDAO();
 		$dao->delete($this);
 	}

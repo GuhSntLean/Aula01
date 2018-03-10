@@ -54,18 +54,20 @@ class UsuarioDAO{
 
 		$item = $prepare->fetch(PDO::FETCH_ASSOC);
 
-		return new Usuario($item['Usuario'],$item['senha'],$item['id']);
+		return new Usuario($item['usuario'],$item['senha'],$item['id']);
 	}
 
 	public function update(Usuario $usuario){
 		try{
 			$this->con->beginTransaction();
 
-			$sql = "UPDATE usuarios SET usuarios = :usuarios, senha = :senha , WHERE id =:id";
+			$sql = "UPDATE usuarios SET usuario = :usuario, senha = :senha  WHERE id =:id";
 
-			$stmt = bindValue(":usuario", $usuario->getUsuario());
-			$stmt = bindValue(":senha", $usuario->getSenha());
-			$stmt = bindValue(":senha", $usuario->getId());
+			$stmt = $this->con->prepare($sql);
+			
+			$stmt->bindValue(":usuario", $usuario->getUsuario());
+			$stmt->bindValue(":senha", $usuario->getSenha());
+			$stmt->bindValue(":id", $usuario->getId());
 
 			$stmt->execute();
 
