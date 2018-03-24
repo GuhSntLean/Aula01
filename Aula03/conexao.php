@@ -1,5 +1,5 @@
-<?php
 
+<?php
 //$dbMysql = new PDO("mysql:host=localhost;dbname=aula03","gs","4linux@");
 $db_Postgres = new PDO("pgsql:host=localhost;dbname=aula03","gs","4linux@");
 

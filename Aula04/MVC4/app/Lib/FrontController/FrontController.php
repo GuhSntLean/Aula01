@@ -14,10 +14,10 @@ class FrontController{
 
 		$action =  isset($rota[1]) ? $rota[1] : 'index';
 
-		$_GET['id'] = isset($rota[2]) ? $rota[2] : null;
+		//$_GET['id'] = isset($rota[2]) ? $rota[2] : null;
 		$id =  isset($rota[2]) ? $rota[2] : null;
 
-		$controller = 'Controller\\' . ucfirst($controller.'Controller');
+		$controller = 'Controller\\'.ucfirst($controller.'Controller');
 
 		// new Controller\Index;
 		$objController = new $controller();

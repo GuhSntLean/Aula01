@@ -1,2 +1,2 @@
 <?php
-const BASEDIR = '/var/www/hatml/501/Aula04/MVC4/';
+const BASEDIR = '/var/www/html/501/Aula04/MVC4/';

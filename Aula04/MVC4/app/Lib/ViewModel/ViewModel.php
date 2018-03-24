@@ -4,10 +4,10 @@
 
 	class ViewModel{
 		private $header = BASEDIR . 'app/View/layout/header.php';
-		private $footer = BASEDIR . 'app/View/layout/footer.php';;
+		private $footer = BASEDIR . 'app/View/layout/footer.php';
 
 		public function render($view , $data = null){
-			$container = BASEDIR . 'app/View/' . $view;
+			$container = BASEDIR .'app/View/'.$view.'.php';
 		}
 
 		private function loadPage(String $container, array $data){

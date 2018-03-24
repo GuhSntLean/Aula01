@@ -2,7 +2,7 @@
 
 namespace Controller;
 
-class Index{
+class IndexController{
 	public function index(){
 		echo "Hello MVC Router";
 	}

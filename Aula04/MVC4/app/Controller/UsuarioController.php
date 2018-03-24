@@ -2,21 +2,24 @@
 
 	namespace Controller;
 
+	use Model\UsuariosModel;
+	use Lib\ViewModel\ViewModel;
+
 
 
 	class UsuarioController{
 		
 		private $usuariosModel;
-		private $baseView;
+		private $viewModel;
 
 		public function __construct(){
-			$this->usuariosModel = new UnsuariosModel();
+			$this->usuariosModel = new UsuariosModel();
 			$this->viewModel = new ViewModel();
 		}
 
 		public function index(){
-			$usuarios = $this->usuariosModel->all();
-			$this->viewModel->render('usuarios/index',['usuarios' => $usuarios]);
+			$usuario = $this->usuariosModel->all();
+			$this->viewModel->render('usuario/index',['usuario' => $usuario]);
 		}
 		public function edit($id){
 			echo "edit $id";
@@ -25,10 +28,11 @@
 			echo "update $id";
 		}
 		public function new(){
-			echo "new";
+			$this->viewModel->render('usuario/new');
 		}
 		public function create(){
-			echo "create";
+			$this->usuariosModel->insert($_GET);
+			header('Location:?r=usuario');
 		}
 		public function delete($id){
 			echo "delete $id";
